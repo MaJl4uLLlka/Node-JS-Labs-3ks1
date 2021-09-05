@@ -12,4 +12,4 @@ http.createServer((request, response)=>
 }
 ).listen(5000);
 
-console.log('Server running at http://localhost:5000/');
+console.log('Server running at http://localhost:5000/html');
