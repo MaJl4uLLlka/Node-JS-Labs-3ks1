@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function getRequest()
+        {
+            fetch("http://localhost:5000/api/name")
+                .then(response=>response.text())
+                .then(result=>document.getElementById("forRequest").innerHTML=result);
+        }
+    </script>
+    <button onclick="getRequest()">Выполнить GET-запрос c fetch</button>
+    <div id="forRequest"></div>
+</body>
+</html>

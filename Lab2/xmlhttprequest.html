@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>XMLHttpRequest</title>
 </head>
 <body>
-    
+    <script type="text/javascript">
+        function getRequest()
+        {
+            let xhr= new XMLHttpRequest();
+            xhr.open("GET","http://localhost:5000/api/name",true);
+            xhr.send();
+            
+            xhr.onreadystatechange=()=>
+            {
+                if(xhr.readyState===4 && xhr.status===200)
+                {
+                    document.getElementById("forText").innerHTML=xhr.responseText;
+                }
+            };
+        }
+    </script>
+    <button onclick="getRequest()">Выполнить GET-запрос</button>
+    <div id="forText"></div>
 </body>
 </html>
