@@ -1,6 +1,5 @@
 let http=require('http');
 let fs=require('fs');
-const { error } = require('console');
 
 http.createServer((request, response)=>
 {

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>04-01</title>
+</head>
+<body>
+    <table id="result"></table>
+    <br>
+    <button onclick="Get()">GET</button>
+
+    <br>
+    <br>
+    <br>
+    <div>
+        <div>
+            <label> ФИО</label>
+            <br>
+            <input type="text" id="Name"></div>
+        <div>
+            <label> Дата рождения</label>
+            <br>
+            <input type="date" id="BDay"></div>
+        <div>
+            <br>
+            <button onclick="Post()">POST</button>
+        </div>
+    </div>    
+    
+    <br>
+    <br>
+    <div>
+        <div>
+            <label> Идентификатор</label>
+            <br>
+            <input type="number" id="ID_put" min="0">
+            <label id="statusField" class="error"></label>
+        </div>
+        
+            <div class="visible" id="put-container">
+            <div>
+                <label> ФИО</label>
+                <br>
+                <input type="text" id="Name_put"></div>
+            <div>
+                <label> Дата рождения</label>
+                <br>
+                <input type="date" id="BDay_put"></div>
+            <div>
+                <br>
+                <button onclick="Put()">PUT</button>
+            </div>
+        </div>
+    </div>    
+
+    <br>
+    <br>
+    <body>
+        <div>
+            <label> Идентификатор</label>
+            <br>
+            <input type="number" id="ID_del" min="0"> 
+            <button id="del-btn" class="del" onclick="Delete()">DELETE</button>
+            <label id="deleted"></label>
+            <label id="statusF" class="error"></label>
+        </div>
+            
+    <br>
+
+    <script>
+        function Get()
+        {
+            console.log('GET');
+            fetch('http://localhost:5000/api/db',{
+                                                method:'GET',
+                                                mode: "no-cors",
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'Accept': 'application/json'
+                                                }
+                                                }
+            )
+            .then(response => {return response.json(); })
+            .then((pdata) => {
+                console.log('pdata', pdata);
+                result.innerHTML = '<th>ID</th> <th>ФИО</th> <th>Дата рождения</th>';
+                pdata.forEach(el => {result.innerHTML += (`<tr>
+                    <td>${el.id}</td> <td>${el.name}</td> <td>${el.bday}</td>
+                    </tr>`); })
+            });
+        }
+
+        
+
+        function Post()
+        {
+            console.log('POST');
+            fetch('http://localhost:5000/api/db',{
+                                                method:'POST',
+                                                mode: "no-cors",
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'Accept': 'application/json'},
+                                                body: JSON.stringify({name: Name.value, bday:BDay.value})
+                                                }
+            )
+            .then(response => {return response.json(); })
+            .then((pdata) => {
+                console.log('POST.pdata', pdata);
+                Get();
+            });
+        }
+
+
+        function Put()
+        {
+            console.log('PUT');
+
+            //TODO put
+            fetch('http://localhost:5000/api/db',{
+                                                method:'PUT',
+                                                mode: "cors",
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'Accept': 'application/json'},
+                                                body: JSON.stringify({id: ID_put.value, name: Name_put.value, bday: BDay_put.value})
+                                                }
+            )
+            .then(response => {return response.json(); })
+            .then((pdata)  => {
+                console.log('PUT.pdata', pdata);
+                if(pdata.status == -1)
+                {
+                    statusField.innerHTML = "Not Found";
+                }
+                else{
+                    statusField.innerHTML = '';
+                    Get();
+                }
+            });
+        }
+
+
+        function Delete()
+        {
+            console.log('DELETE');
+
+            let id = Number(ID_del.value);
+            //TODO delete
+            fetch(`http://localhost:5000/api/db?id=${id}`,{
+                                                method:'DELETE',
+                                                mode: "cors",
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'Accept': 'application/json'},
+                                                }
+            )
+            .then(response => {return response.json(); })
+            .then((pdata) => {
+
+                console.log('DELETE.pdata', pdata);
+
+                deleted.innerHTML = '';
+
+                if(Number.parseInt(pdata) != -1)
+                {
+                    statusF.innerHTML = '';
+                    pdata.forEach( el => (deleted.innerHTML += `{ id: ${el.id}, name: ${el.name}, bday: ${el.bday}}`));
+                    Get();
+                }
+                else {
+                    statusF.innerHTML = 'Not Found';
+                }
+            });
+        }
+    </script>
+       
+    
+</body>
+</html>

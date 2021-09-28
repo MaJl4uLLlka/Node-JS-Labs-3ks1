@@ -1,0 +1,31 @@
+.hiden {
+    visibility: collapse;
+}
+
+.visible
+{
+    visibility: visible;
+}
+
+.container
+{
+    left: 500px;
+    position: absolute;
+}
+
+table
+{
+    width: 100%;
+    border: 4px double black;
+    border-collapse:collapse;
+}
+
+th, td
+{
+    text-align: center;
+    border: 1px solid black;
+}
+
+.error{
+    color: red;
+}
