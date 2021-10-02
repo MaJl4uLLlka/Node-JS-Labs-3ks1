@@ -119,7 +119,6 @@
         {
             console.log('PUT');
 
-            //TODO put
             fetch('http://localhost:5000/api/db',{
                                                 method:'PUT',
                                                 mode: "cors",
@@ -149,7 +148,7 @@
             console.log('DELETE');
 
             let id = Number(ID_del.value);
-            //TODO delete
+            
             fetch(`http://localhost:5000/api/db?id=${id}`,{
                                                 method:'DELETE',
                                                 mode: "cors",
@@ -169,7 +168,7 @@
                 {
                     statusF.innerHTML = '';
                     pdata.forEach( el => (deleted.innerHTML += `{ id: ${el.id}, name: ${el.name}, bday: ${el.bday}}`));
-                    Get();
+                    //Get();
                 }
                 else {
                     statusF.innerHTML = 'Not Found';
