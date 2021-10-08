@@ -1,0 +1,10 @@
+информация :
+npm docs sendmail - посмотреть документацию на гите
+npm view sendmail - краткая инфа о пакете
+
+установка:
+npm install sendmail
+
+установлен ли пакет?
+npm list -g sendmail - установлен ли глобально
+npm list sendmail - установлен ли локально

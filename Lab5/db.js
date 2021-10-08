@@ -41,7 +41,7 @@ function DB()
         return elementIndex != NOT_FOUND ? db_data.splice(elementIndex, 1) : NOT_FOUND;
     }
 
-    
+    this.commit = () => {}
 }
 
 util.inherits(DB, ee.EventEmitter);
