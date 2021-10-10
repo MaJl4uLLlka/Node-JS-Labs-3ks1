@@ -8,17 +8,51 @@
 </head>
 <body>
     <div>
-        <label for="">Email</label>
-        <input type="text" name="email" id="email">
-        
-        <label for="">Theme</label>
-        <input type="text" name="theme" id="theme">
-
-        <label for="">Message</label>
-        <input type="text" name="message" id="message">
-
+        <div>
+            <label> Email</label>
+            <br>
+            <input type="text" name="email" id="email"> 
+        </div>
+        <br>
+        <div>
+            <label> Theme</label>
+            <br>
+            <input type="text" name="theme" id="theme">
+        </div>
+        <br>
+        <div>
+            <label> Message</label>
+            <br>
+            <input type="text" name="message" id="message">
+        </div>
+        <br>
         <button onclick="sendMessage()">Send</button>
     </div>
+
+    <label id="status"></label>
+
+    <script>
+        function sendMessage()
+        {
+            fetch('http://localhost:5000/send',{
+                                                method:'POST',
+                                                mode: "no-cors",
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'Accept': 'application/json'},
+                                                body: JSON.stringify({email: email.value, theme: theme.value, message: message.value})
+                                                }
+            )
+            .then(response => { resetFields(); });
+        }
+
+        function resetFields()
+        {
+            email.value = '';
+            theme.value = '';
+            message.value = '';
+        }
+    </script>
     
 </body>
 </html>
