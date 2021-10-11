@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nodemailer</title>
+</head>
+<body>
+    <div>
+            <label> Message</label>
+            <br>
+            <input type="text" name="text" id="text">
+        </div>
+        <br>
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+
+    <script>
+        function sendMessage()
+        {
+            if(text.value != null)
+            {
+                fetch('http://localhost:5000/send',{
+                                                    method:'POST',
+                                                    mode: "no-cors",
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'Accept': 'application/json'},
+                                                    body: JSON.stringify({text: text.value})
+                                                    }
+                )
+                .then(response => { resetFields(); });
+            }
+        }
+
+        function resetFields()
+        {
+            text.value = '';
+        }
+    </script>
+    
+</body>
+</html>
