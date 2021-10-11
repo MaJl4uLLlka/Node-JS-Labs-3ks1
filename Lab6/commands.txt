@@ -8,3 +8,4 @@ npm install sendmail
 установлен ли пакет?
 npm list -g sendmail - установлен ли глобально
 npm list sendmail - установлен ли локально
+npm link module_name добавляет зависимости
