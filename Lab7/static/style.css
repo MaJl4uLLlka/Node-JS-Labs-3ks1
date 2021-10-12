@@ -1,0 +1,36 @@
+.container{
+    margin-left: 90px;
+    margin-right: 90px;
+    border: 2px solid black;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+.center-content
+{
+    align-items: center;
+}
+.content
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.big
+{
+    max-width: 250px;
+    min-width: 250px;
+    width: 250px;
+    height: 400px;
+    align-self: center;
+}
+
+.data-container
+{
+    display: flex;
+}
+
+.text
+{
+    word-wrap: break-all;
+}
