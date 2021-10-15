@@ -28,7 +28,7 @@ function getXML()
             'Content-Type': 'application/xml',
             'Accept': 'application/xml'
         }})
-    .then(response => {response.text()})
+    .then(response => { return response.text()})
     .then(str => {
         console.log(str);
         (new window.DOMParser()).parseFromString(str, "text/xml");
