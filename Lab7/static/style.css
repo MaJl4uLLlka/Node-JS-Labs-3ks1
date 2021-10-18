@@ -21,7 +21,23 @@
     max-width: 250px;
     min-width: 250px;
     width: 250px;
-    height: 400px;
+    height: 350px;
+    align-self: center;
+}
+
+.first 
+{
+    max-width: 100px;
+    min-width: 100px;
+    width: 100px;
+    height: 350px;
+    align-self: center;
+}
+
+.forXml
+{
+    width: 500px;
+    height: 350px;
     align-self: center;
 }
 

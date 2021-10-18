@@ -4,7 +4,16 @@ const fs   = require('fs');
 const path = require('path');
 const { resolve } = require('path/posix');
 
-const staticDirectory = '.';
+let staticDirectory = '.';
+
+function init(relativePath)
+{
+    staticDirectory = relativePath;
+    
+    return {
+        getFile: getFile
+    } ;
+}
 
 async function getFile(filepath)
 {
@@ -92,4 +101,5 @@ async function getFile(filepath)
             
 } 
 
-exports.getFile = getFile;
+module.exports = init;
+module.exports.getFile = getFile;

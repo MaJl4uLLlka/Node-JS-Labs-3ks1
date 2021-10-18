@@ -1,4 +1,3 @@
-
 function getJSON()
 {
     fetch('http://localhost:5000/static/info.json',{
@@ -31,13 +30,17 @@ function getXML()
     .then(response => { return response.text()})
     .then(str => {
         console.log(str);
-        (new window.DOMParser()).parseFromString(str, "text/xml");
-    })
-    .then(data =>
-        {
-            let XMLContainer = document.getElementById('forXML');
-            XMLContainer.innerHTML = data;
-        });
+        
+        let XMLContainer = document.getElementById('forXML');
+
+        let regex2 = ">";
+
+        let newStr =str.replace(/</g, "&lt;");
+        let result = newStr.replace(/>/g, "&gt;");
+
+        console.log(result);
+        XMLContainer.innerHTML = result;
+    });
 }
 
 getJSON();

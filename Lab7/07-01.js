@@ -1,7 +1,7 @@
 const http = require('http');
 const fs   = require('fs');
 const url  = require('url');
-let {getFile} = require('./m07-01');
+const mymodule = require('./m07-01')('.');
 
 http.createServer( (req, resp) =>
 {
@@ -15,7 +15,7 @@ http.createServer( (req, resp) =>
         }
         else
         {
-            getFile(url.parse(req.url).pathname)
+            mymodule.getFile(url.parse(req.url).pathname)
             .then(data => 
                 {
                     resp.writeHead(200, {'Content-Type': data.MIME});
