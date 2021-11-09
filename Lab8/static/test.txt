@@ -1,0 +1,3 @@
+crsctl check cluster -all
+crsctl check res -t
+ORA_SID = cdb19c

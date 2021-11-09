@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form action="http://localhost:5000/formparameter" method="post" enctype="multipart/form-data">
+        <label for="">Text</label>
+        <br>
+        <input type="text" name="text" id="">
+        <br>
+        <label for="">Number</label>
+        <br>
+        <input type="number" name="number" id="">
+        <br>
+        <label for="">Date</label>
+        <br>
+        <input type="date" name="date" id="">
+        <br>
+        <label for="">Modules</label>
+        <br>
+        <input type="checkbox" name="httpCheckbox" id="" value="http"> <label for="">http</label>
+        <input type="checkbox" name="fsCheckbox" id="" value="fs">   <label>fs</label>
+        <input type="checkbox" name="urlCheckbox" id="" value="url"> <label for="">url</label>
+        <br>
+        <label for="">Method</label>
+        <br>
+        <div>
+            <input type="radio" name="method"  value="GET"> <label>GET</label>
+            <br>
+            <input type="radio" name="method"  value="POST"> <label>POST</label>
+            <br>
+            <input type="radio" name="method"  value="PUT"> <label>PUT</label>
+            <br>
+            <input type="radio" name="method"  value="DELETE"> <label>DELETE</label>
+        </div>
+        <br>
+        <br>
+        <textarea name="textarea" cols="30" rows="10"></textarea>
+        <br>
+        <br>
+        <input type="submit" value="submit1" >
+        <input type="submit" value="submit2" >
+    </form>
+    
+</body>
+</html>
